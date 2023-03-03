@@ -13,3 +13,11 @@ export const GetTopAlbums = async (data) => {
     throw error
   }
 }
+export const SearchAlbums = async (data) => {
+  try {
+    const res = await Client.get(
+      `http://ws.audioscrobbler.com/2.0/?method=album.search&album=${data.name}&api_key=${API_KEY}&format=json`
+    )
+    return res.data
+  } catch (error) {}
+}
