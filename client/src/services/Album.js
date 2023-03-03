@@ -1,11 +1,11 @@
 import Client from './api'
-require('dotenv').config()
-const API_KEY = process.env.API_KEY
+import axios from 'axios'
+const apiKey = process.env.REACT_APP_API_KEY
 
 export const GetTopAlbums = async (data) => {
   try {
-    const res = await Client.get(
-      `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${data.tag}&api_key=${API_KEY}&format=json`
+    const res = await axios.get(
+      `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${data.tag}&api_key=${apiKey}&format=json`
     )
     return res.data
   } catch (error) {
@@ -13,11 +13,16 @@ export const GetTopAlbums = async (data) => {
     throw error
   }
 }
-export const SearchAlbums = async (data) => {
+export const SearchAlbums = async (req, res) => {
   try {
-    const res = await Client.get(
-      `http://ws.audioscrobbler.com/2.0/?method=album.search&album=${data.name}&api_key=${API_KEY}&format=json`
+    const response = await axios.get(
+      `http://ws.audioscrobbler.com/2.0/?method=album.search&album='queen'&api_key=${apiKey}&format=json`
     )
-    return res.data
-  } catch (error) {}
+    // const response = await axios.get(
+    //   `http://ws.audioscrobbler.com/2.0/?method=album.search&album='Queen'&api_key=cef4b6002340af81c05aa7a66e2661e5&format=json`
+    // )
+    return response.data
+  } catch (error) {
+    console.log('Error in Search Album')
+  }
 }

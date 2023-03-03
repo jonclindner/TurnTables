@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import { CheckSession } from './services/Auth'
+// require('dotenv').config()
 
 function App() {
   const [user, setUser] = useState(null)
