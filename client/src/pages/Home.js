@@ -1,13 +1,13 @@
-import { SearchAlbums } from '../services/Album'
+import { GetTopAlbums, SearchAlbums } from '../services/Album'
 import { useEffect } from 'react'
 
 const Home = () => {
-  let name = 'Pink FLoyd'
-
   useEffect(() => {
     const search = async () => {
-      let result = await SearchAlbums()
-      console.log(result)
+      let daresult = await SearchAlbums('queen')
+      let result = await GetTopAlbums('disco')
+      console.log(result.data[1])
+      console.log(daresult)
     }
     search()
   }, [])
