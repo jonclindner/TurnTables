@@ -2,26 +2,19 @@ import Client from './api'
 import axios from 'axios'
 const apiKey = process.env.REACT_APP_API_KEY
 
-export const GetTopAlbums = async (data) => {
+export const GetTopAlbums = async (tag) => {
   try {
-    const res = await axios.get(
-      `http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=${data.tag}&api_key=${apiKey}&format=json`
-    )
-    return res.data
+    const response = await Client.get(`/api/LastFm/GetTopAlbumsByTag/${tag}`)
+    return response
   } catch (error) {
     console.log('error in GetTopAlbums')
     throw error
   }
 }
-export const SearchAlbums = async (req, res) => {
+export const SearchAlbums = async (name) => {
   try {
-    const response = await axios.get(
-      `http://ws.audioscrobbler.com/2.0/?method=album.search&album='queen'&api_key=${apiKey}&format=json`
-    )
-    // const response = await axios.get(
-    //   `http://ws.audioscrobbler.com/2.0/?method=album.search&album='Queen'&api_key=cef4b6002340af81c05aa7a66e2661e5&format=json`
-    // )
-    return response.data
+    const response = await Client.get(`/api/LastFm/SearchAlbumsByName/${name}`)
+    return response
   } catch (error) {
     console.log('Error in Search Album')
   }
