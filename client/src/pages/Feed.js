@@ -6,10 +6,6 @@ const Feed = () => {
   const [resultArray, setResultArray] = useState([])
   const [albumGenre, setAlbumGenre] = useState('pop')
 
-  const searchAlbums = async (albumName) => {
-    setResultArray(await SearchAlbums(`${albumName}`))
-  }
-
   useEffect(() => {
     const fetchTop = async () => {
       setResultArray(await GetTopAlbums(`${albumGenre}`))
