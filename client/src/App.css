@@ -4,6 +4,18 @@ header{
 
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+.homeLogo{
+  max-width: 50px;
+  object-fit: contain;
+}
+.siteLogo{
+  margin: 0;
+  display: flex;
+}
+.magnifyingGlass{
+  max-width: 30px;
 }
 body{
   /* background-color: #F7D3AA; */

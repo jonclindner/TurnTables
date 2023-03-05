@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import { CheckSession } from './services/Auth'
+import SearchResults from './pages/SearchResults'
 // require('dotenv').config()
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed user={user} />} />
+          <Route path="/search/:search" element={<SearchResults />} />
         </Routes>
       </main>
     </div>

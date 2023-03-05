@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom'
+import Searchbar from './Searchbar'
 const Navbar = ({ user, handleLogOut }) => {
   let userOptions
+  
 
 //    IMPLEMENT BOTH OF THESE IN A TERNARY WHEN WE FINISH USER AUTH 
 
@@ -28,11 +30,12 @@ const Navbar = ({ user, handleLogOut }) => {
 
   return (<header>
       {/* {user ? userOptions : publicOptions} */}
-
-    <Link to='/'>Home</Link>
+    <Link to='/' className='siteLogo'><img className='homeLogo'src='https://cdn-icons-png.flaticon.com/512/181/181156.png'/><p>TurnTables</p></Link>
+    <Link to='/feed'>Feed</Link>
+    <Searchbar/>
+    
     <Link to='/login'>Login</Link>
     <Link to='/register'>Register</Link>
-    <Link to='/feed'>Feed</Link>
   </header>)
 }
 export default Navbar
