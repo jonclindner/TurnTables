@@ -31,7 +31,7 @@ const Navbar = ({ user, handleLogOut }) => {
   return (<header>
       {/* {user ? userOptions : publicOptions} */}
     <Link to='/' className='siteLogo'><img className='homeLogo'src='https://cdn-icons-png.flaticon.com/512/181/181156.png'/><p>TurnTables</p></Link>
-    <Link to='/feed'>Feed</Link>
+    <Link to='/feed'>Top Albums</Link>
     <Searchbar/>
     
     <Link to='/login'>Login</Link>
