@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Feed from './pages/Feed'
 import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
+import AlbumDetails from './pages/AlbumDetails'
 // require('dotenv').config()
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/search/:search" element={<SearchResults />} />
+          <Route path="/album/:albumName" element={<AlbumDetails />} />
         </Routes>
       </main>
     </div>
