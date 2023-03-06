@@ -1,12 +1,25 @@
 import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { GetAlbumDetails } from '../services/Album'
 
 const AlbumDetails = () => {
   const location = useLocation()
   const { album } = location.state
   const [albumName, setAlbumName] = useState()
-  console.log(album)
-  console.log(album.artist)
+
+  useEffect(() => {
+    const GetAlbumDetails = async () => {}
+
+    const addAlbum = async (album) => {
+      let result = await GetAlbumDetails({
+        name: album.albumName,
+        artist: album.artist.name,
+        image: album.large_image_url,
+        releaseDate: '1999'
+      })
+    }
+    addAlbum(album)
+  }, [])
 
   return (
     <div className="albumDetailsBody">

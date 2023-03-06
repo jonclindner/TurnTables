@@ -29,3 +29,11 @@ export const GetAlbumDetails = async (artist, album) => {
     throw error
   }
 }
+export const AddAlbumToDb = async (album) => {
+  try {
+    const response = await Client.post(`/album/create-album`)
+    return response
+  } catch (error) {
+    throw error
+  }
+}
