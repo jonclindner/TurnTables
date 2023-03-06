@@ -1,8 +1,15 @@
+import { Link } from "react-router-dom"
+
 const AlbumCard = ({album}) => {
-  return (<div className="albumCard">
+  return (
+  <Link to={`/album/${album.albumName}`} state={{album:album}}>
+  
+  <div className="albumCard">
   <p>{album.albumName}</p>
   <p>{album.artist.name}</p>
   <img src={album.image_url['#text']} />
-</div>)
+</div>
+  
+  </Link>)
 }
 export default AlbumCard
