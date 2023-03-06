@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
+import CreateReview from './pages/CreateReview'
 import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import AlbumDetails from './pages/AlbumDetails'
@@ -43,6 +44,7 @@ function App() {
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/search/:search" element={<SearchResults />} />
           <Route path="/album/:albumName" element={<AlbumDetails />} />
+          <Route path="/album/review/:albumName" element={<CreateReview />} />
         </Routes>
       </main>
     </div>
