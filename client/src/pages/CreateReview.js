@@ -4,8 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 const CreateReview = () => {
   const initialState = {
+    albumId: '',
+    userId: '',
+    grading: '',
     comment: '',
-    rating: ''
+    albumId: ''
   }
 
   const [formState, setFormState] = useState(initialState)
