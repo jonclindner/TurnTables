@@ -1,3 +1,50 @@
+import { useState } from 'react'
+import axios from 'axios'
+import { useParams, useNavigate } from 'react-router-dom'
+
+const CreateReview = () => {
+  const initialState = {
+    comment: '',
+    rating: ''
+  }
+
+  const [formState, setFormState] = useState(initialState)
+
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value })
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    await axios.post('http://localhost3001/api/parks', formState)
+    setFormState(initialState)
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="comment">Comment</label>
+      <input
+        type="text"
+        id="comment"
+        onChange={handleChange}
+        value={formState.comment}
+      />
+      <label htmlFor="rating">Rating</label>
+      <select id="rating" onChange={handleChange} value={formState.rating}>
+        <option value=""> </option>
+        <option value="⭐️">⭐️</option>
+        <option value="⭐️⭐️">⭐️⭐️</option>
+        <option value="⭐️⭐️⭐️">⭐️⭐️⭐️</option>
+        <option value="⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️</option>
+        <option value="⭐️⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️⭐️</option>
+      </select>
+
+      <button type="submit">Submit Information</button>
+    </form>
+  )
+}
+
+export default CreateReview
+
 // const CreateReview = () => {}
 
 // import { useState } from "react"
