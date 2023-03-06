@@ -2,12 +2,12 @@ import { Link } from "react-router-dom"
 
 const AlbumCard = ({album}) => {
   return (
-  <Link to={`/album/${album.albumName}`} state={{album:album}}>
+  <Link to={`/album/${album.albumName.replace(/\s+/g, '+').replace(/\//g, "-")}`} state={{album:album}}>
   
   <div className="albumCard">
   <p>{album.albumName}</p>
   <p>{album.artist.name}</p>
-  <img src={album.image_url['#text']} />
+  <img src={album.medium_image_url['#text']} />
 </div>
   
   </Link>)
