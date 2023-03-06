@@ -19,3 +19,13 @@ export const SearchAlbums = async (name) => {
     console.log('Error in Search Album')
   }
 }
+export const GetAlbumDetails = async (artist, album) => {
+  try {
+    const response = await Client.get(
+      `/api/LastFm/GetAlbumDetails/${artist}/${album}`
+    )
+    return response
+  } catch (error) {
+    throw error
+  }
+}
