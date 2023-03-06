@@ -1,4 +1,4 @@
-import { GetTopAlbums, SearchAlbums } from '../services/Album'
+import { GetTopAlbums } from '../services/Album'
 import { useEffect, useState } from 'react'
 import AlbumCard from '../components/AlbumCard'
 
@@ -9,7 +9,6 @@ const Feed = () => {
   useEffect(() => {
     const fetchTop = async () => {
       setResultArray(await GetTopAlbums(`${albumGenre}`))
-      // console.log(resultArray.data[1])
     }
     fetchTop()
     console.log('hit')

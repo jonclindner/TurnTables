@@ -1,4 +1,4 @@
-import { GetTopAlbums, SearchAlbums } from '../services/Album'
+import { SearchAlbums } from '../services/Album'
 import { useEffect, useState } from 'react'
 import AlbumCard from '../components/AlbumCard'
 import { useLocation, useParams } from 'react-router-dom'

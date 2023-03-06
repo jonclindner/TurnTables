@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const AlbumCard = ({album}) => {
   return (
-  <Link to={`/album/${album.albumName}`}>
+  <Link to={`/album/${album.albumName}`} state={{album:album}}>
   
   <div className="albumCard">
   <p>{album.albumName}</p>
