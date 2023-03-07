@@ -23,13 +23,13 @@ const AlbumDetails = () => {
     if (result) {
       return
     } else {
-      // let res = await AddAlbumToDb({
-      //   name: albumName,
-      //   artist: artistName,
-      //   image: album.large_image_url['#text'],
-      //   releaseDate: '1999'
-      // })
-      // console.log(res)
+      let res = await AddAlbumToDb({
+        name: albumName,
+        artist: artistName,
+        image: album.large_image_url['#text'],
+        releaseDate: '1999'
+      })
+      console.log(res)
     }
   }
 
