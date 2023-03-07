@@ -12,12 +12,17 @@ const AlbumDetails = () => {
   let artistName = album.artist.name.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumId
+  const [tagArray, setTagArray] = useState([])
+  let addTagArray = []
 
   const GetAlbumInfo = async (artistName, albumName) => {
-    let albumResult = await GetAlbumDetails(artistName, albumName)
+    // let albumResult = await GetAlbumDetails(artistName, albumName)
     // console.log(albumResult)
+    // albumResult.data.tags.tag.forEach((tag) => {
+    //   addTagArray.pop(tag)
+    // })
+    // setTagArray(addTagArray])
   }
-
 
   useEffect(() => {
     const checkAlbumExists = async (artistName, albumName) => {
@@ -25,7 +30,6 @@ const AlbumDetails = () => {
       console.log(result)
       if (result.data.length !== 0) {
         albumId = result.data[0].id
-        console.log(albumId)
         return
       } else {
         let res = await AddAlbumToDb({
@@ -35,12 +39,10 @@ const AlbumDetails = () => {
           releaseDate: '1999'
         })
         albumId = res
-        console.log(albumId)
       }
     }
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
-    console.log('I fire once')
   }, [])
 
   return (
@@ -48,6 +50,14 @@ const AlbumDetails = () => {
       <img src={`${album.large_image_url['#text']}`} />
       <h1>{album.albumName}</h1>
       <h2>{album.artist.name}</h2>
+      <h2>Tags:</h2>
+
+      {tagArray.length === 0 ? (
+        <div>len0</div>
+      ) : (
+        tagArray.map((tag) => <h1>{tag}</h1>)
+      )}
+
       <div>
         <Link to={`/album/review/${album.albumName}`} key={album.albumName}>
           {/* <button>Leave a Review</button> */}
