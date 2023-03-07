@@ -9,25 +9,36 @@ import {
 const AlbumDetails = () => {
   const location = useLocation()
   const { album } = location.state
-  let artistName = album.artist.name.replace(/\s+/g, '+').replace(/\//g, '-')
+  console.log(album)
+  let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumId
   const [tagArray, setTagArray] = useState([])
   let addTagArray = []
 
-  const GetAlbumInfo = async (artistName, albumName) => {
-    // let albumResult = await GetAlbumDetails(artistName, albumName)
-    // console.log(albumResult)
-    // albumResult.data.tags.tag.forEach((tag) => {
-    //   addTagArray.pop(tag)
-    // })
-    // setTagArray(addTagArray])
-  }
+  const [songArray, setSongArray] = useState([])
+  let addSongArray = []
+
 
   useEffect(() => {
+    const GetAlbumInfo = async (artistName, albumName) => {
+      await GetAlbumDetails(artistName, albumName).then((response) => {
+        response.data.tags.tag.forEach((tag) => {
+          addTagArray.unshift(tag.name)
+        })
+        setTagArray(addTagArray)
+
+        response.data.tracks.track.forEach((song) => {
+          addSongArray.unshift(song.name)
+        })
+        setSongArray(addSongArray)
+
+        console.log(response)
+      })
+    }
     const checkAlbumExists = async (artistName, albumName) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
-      console.log(result)
+      // console.log(result)
       if (result.data.length !== 0) {
         albumId = result.data[0].id
         return
@@ -53,9 +64,17 @@ const AlbumDetails = () => {
       <h2>Tags:</h2>
 
       {tagArray.length === 0 ? (
-        <div>len0</div>
+
+        <div>No tags</div>
       ) : (
-        tagArray.map((tag) => <h1>{tag}</h1>)
+        tagArray.map((tag) => <h3>{tag}</h3>)
+      )}
+      <h2>Tracks:</h2>
+      {songArray.length === 0 ? (
+        <div>No tracks</div>
+      ) : (
+        songArray.map((track) => <h3>{track}</h3>)
+
       )}
 
       <div>
