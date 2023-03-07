@@ -13,6 +13,7 @@ const Feed = () => {
     fetchTop()
     console.log('hit')
   }, [])
+  console.log(resultArray)
 
   return (
     <div>
