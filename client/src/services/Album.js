@@ -38,7 +38,7 @@ export const AddAlbumToDb = async (data) => {
 export const SearchAlbumsFromDb = async (artist, name) => {
   try {
     const response = await Client.get(
-      `/album/get-album-by-name-and-artist/:${artist}/:${name}`
+      `/album/get-album-by-name-and-artist/${artist}/${name}`
     )
     return response
   } catch (error) {
