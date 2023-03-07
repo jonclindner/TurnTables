@@ -18,6 +18,7 @@ const AlbumDetails = () => {
     // console.log(albumResult)
   }
 
+
   useEffect(() => {
     const checkAlbumExists = async (artistName, albumName) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
@@ -39,6 +40,7 @@ const AlbumDetails = () => {
     }
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
+    console.log('I fire once')
   }, [])
 
   return (
