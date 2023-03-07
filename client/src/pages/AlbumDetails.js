@@ -9,9 +9,9 @@ import {
 const AlbumDetails = () => {
   const location = useLocation()
   const { album } = location.state
-  const [albumResult, setAlbumResult] = useState()
   let artistName = album.artist.name.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
+  let albumId
 
   const GetAlbumInfo = async (artistName, albumName) => {
     let albumResult = await GetAlbumDetails(artistName, albumName)
@@ -22,7 +22,9 @@ const AlbumDetails = () => {
     const checkAlbumExists = async (artistName, albumName) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
       console.log(result)
-      if (result.data.length === 0) {
+      if (result.data.length !== 0) {
+        albumId = result.data[0].id
+        console.log(albumId)
         return
       } else {
         let res = await AddAlbumToDb({
@@ -31,12 +33,11 @@ const AlbumDetails = () => {
           image: album.large_image_url['#text'],
           releaseDate: '1999'
         })
-        console.log(res)
+        albumId = res
+        console.log(albumId)
       }
     }
-    // console.log('test')
-
-    // GetAlbumInfo(artistName, albumName)
+    GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
 
