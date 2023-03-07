@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetAlbumDetails } from '../services/Album'
 
@@ -26,6 +26,12 @@ const AlbumDetails = () => {
       <img src={`${album.large_image_url['#text']}`} />
       <h1>{album.albumName}</h1>
       <h2>{album.artist.name}</h2>
+      <div>
+        <Link to={`/album/review/${album.albumName}`} key={album.albumName}>
+          {/* <button>Leave a Review</button> */}
+          <button>Review This Album</button>
+        </Link>
+      </div>
     </div>
   )
 }

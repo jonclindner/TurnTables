@@ -3,14 +3,14 @@ import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 
 const CreateReview = () => {
+  let navigate = useNavigate()
   const initialState = {
-    albumId: '',
-    userId: '',
+    // userId: '',
     grading: '',
-    comment: '',
-    albumId: ''
+    comment: ''
+    // albumId: ''
   }
-
+  let { albumName } = useParams()
   const [formState, setFormState] = useState(initialState)
 
   const handleChange = (event) => {
@@ -19,11 +19,21 @@ const CreateReview = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await axios.post('http://localhost3001/api/parks', formState)
+    await axios.post('http://localhost3001/review/createreview', formState)
     setFormState(initialState)
+    navigate`/album/${albumName}`
   }
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="grading">Rating</label>
+      <select id="grading" onChange={handleChange} value={formState.grading}>
+        <option value="0"> </option>
+        <option value="1">⭐️</option>
+        <option value="2">⭐️⭐️</option>
+        <option value="3">⭐️⭐️⭐️</option>
+        <option value="4">⭐️⭐️⭐️⭐️</option>
+        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+      </select>
       <label htmlFor="comment">Comment</label>
       <input
         type="text"
@@ -31,17 +41,8 @@ const CreateReview = () => {
         onChange={handleChange}
         value={formState.comment}
       />
-      <label htmlFor="rating">Rating</label>
-      <select id="rating" onChange={handleChange} value={formState.rating}>
-        <option value=""> </option>
-        <option value="⭐️">⭐️</option>
-        <option value="⭐️⭐️">⭐️⭐️</option>
-        <option value="⭐️⭐️⭐️">⭐️⭐️⭐️</option>
-        <option value="⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️</option>
-        <option value="⭐️⭐️⭐️⭐️⭐️">⭐️⭐️⭐️⭐️⭐️</option>
-      </select>
 
-      <button type="submit">Submit Information</button>
+      <button type="submit">Submit Review</button>
     </form>
   )
 }
