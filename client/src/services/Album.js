@@ -1,6 +1,4 @@
 import Client from './api'
-import axios from 'axios'
-const apiKey = process.env.REACT_APP_API_KEY
 
 export const GetTopAlbums = async (tag) => {
   try {
@@ -22,18 +20,28 @@ export const SearchAlbums = async (name) => {
 export const GetAlbumDetails = async (artist, album) => {
   try {
     const response = await Client.get(
-      `/api/LastFm/GetAlbumDetails/${artist}/${album}`
+      `/api/LastFm/GetAlbumInfo/${artist}/${album}`
     )
     return response
   } catch (error) {
     throw error
   }
 }
-export const AddAlbumToDb = async (album) => {
+export const AddAlbumToDb = async (data) => {
   try {
-    const response = await Client.post(`/album/create-album`)
-    return response
+    const response = await Client.post(`/album/create-album`, data)
+    return response.data
   } catch (error) {
     throw error
+  }
+}
+export const SearchAlbumsFromDb = async (artist, name) => {
+  try {
+    const response = await Client.get(
+      `/album/get-album-by-name-and-artist/:${artist}/:${name}`
+    )
+    return response
+  } catch (error) {
+    console.log('Error in Search Album')
   }
 }
