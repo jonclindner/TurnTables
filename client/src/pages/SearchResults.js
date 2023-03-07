@@ -4,13 +4,13 @@ import AlbumCard from '../components/AlbumCard'
 import { useLocation, useParams } from 'react-router-dom'
 
 const SearchResults = () => {
-  const [resultArray, setResultArray] = useState([])
   // const [search, setSearch] = useState(useParams())
   // console.log(search)
 
   const location = useLocation()
   const { searchValue } = location.state
-  const [albumName, setAlbumName] = useState(searchValue)
+  const [albumName, setAlbumName] = useState()
+  const [resultArray, setResultArray] = useState([])
 
   if (albumName !== location.state.searchValue) {
     setAlbumName(location.state.searchValue)
@@ -22,6 +22,7 @@ const SearchResults = () => {
     }
     searchAlbums(albumName)
   }, [albumName])
+  console.log(resultArray)
 
   return (
     <div>
