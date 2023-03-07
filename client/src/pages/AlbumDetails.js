@@ -15,6 +15,7 @@ const AlbumDetails = () => {
   let albumId
   const [tagArray, setTagArray] = useState([])
   let addTagArray = []
+
   const [songArray, setSongArray] = useState([])
   let addSongArray = []
 
@@ -53,7 +54,6 @@ const AlbumDetails = () => {
     }
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
-    console.log('I fire once')
   }, [])
 
   return (
@@ -64,6 +64,7 @@ const AlbumDetails = () => {
       <h2>Tags:</h2>
 
       {tagArray.length === 0 ? (
+
         <div>No tags</div>
       ) : (
         tagArray.map((tag) => <h3>{tag}</h3>)
@@ -73,6 +74,7 @@ const AlbumDetails = () => {
         <div>No tracks</div>
       ) : (
         songArray.map((track) => <h3>{track}</h3>)
+
       )}
 
       <div>
