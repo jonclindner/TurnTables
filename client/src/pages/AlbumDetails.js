@@ -46,6 +46,7 @@ const AlbumDetails = () => {
     // addAlbum(album)
     // GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
+    console.log('I fire once')
   }, [])
 
   return (
