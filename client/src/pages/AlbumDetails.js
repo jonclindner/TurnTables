@@ -17,33 +17,25 @@ const AlbumDetails = () => {
     let albumResult = await GetAlbumDetails(artistName, albumName)
     // console.log(albumResult)
   }
-  const checkAlbumExists = async (artistName, albumName) => {
-    let result = await SearchAlbumsFromDb(artistName, albumName)
-    console.log(result)
-    if (result) {
-      return
-    } else {
-      // let res = await AddAlbumToDb({
-      //   name: albumName,
-      //   artist: artistName,
-      //   image: album.large_image_url['#text'],
-      //   releaseDate: '1999'
-      // })
-      // console.log(res)
-    }
-  }
 
   useEffect(() => {
-    // const addAlbum = async (album) => {
-    //   let result = await AddAlbumToDb({
-    //     name: album.albumName,
-    //     artist: album.artist.name,
-    //     image: album.large_image_url,
-    //     releaseDate: '1999'
-    //   })
-    //   console.log(result)
-    // }
-    // addAlbum(album)
+    const checkAlbumExists = async (artistName, albumName) => {
+      let result = await SearchAlbumsFromDb(artistName, albumName)
+      console.log(result)
+      if (result.data.length === 0) {
+        return
+      } else {
+        let res = await AddAlbumToDb({
+          name: albumName,
+          artist: artistName,
+          image: album.large_image_url['#text'],
+          releaseDate: '1999'
+        })
+        console.log(res)
+      }
+    }
+    // console.log('test')
+
     // GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
