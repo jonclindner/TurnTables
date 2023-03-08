@@ -1,13 +1,13 @@
 import './App.css'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
+import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import CreateReview from './pages/CreateReview'
-import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import AlbumDetails from './pages/AlbumDetails'
 import UserDetails from './pages/UserDetails'
@@ -25,13 +25,13 @@ function App() {
     const user = await CheckSession()
     setUser(user)
   }
-  console.log(user)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
 
     if (token) {
       checkToken()
+      console.log(token)
     }
   }, [])
 
@@ -45,8 +45,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/search/:search" element={<SearchResults />} />
-          <Route path="/album/:albumName" element={<AlbumDetails />} />
-          <Route path="/album/review/:albumName" element={<CreateReview />} />
+          <Route
+            path="/album/:albumName"
+            element={<AlbumDetails user={user} />}
+          />
+          <Route
+            path="/album/review/:albumName"
+            element={<CreateReview user={user} />}
+          />
           <Route path="/user-details" element={<UserDetails user={user} />} />
         </Routes>
       </main>

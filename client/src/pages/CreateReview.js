@@ -3,16 +3,16 @@ import { useState } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import Client from '../services/api'
 
-const CreateReview = () => {
+const CreateReview = ({ user }) => {
   let navigate = useNavigate()
   const location = useLocation()
   const { albumId } = location.state
   // const { user } = { user }
   const initialState = {
-    // userId: '',
+    userId: user.id,
     grading: '',
-    comment: ''
-    // albumId: ''
+    comment: '',
+    albumId: albumId
   }
   let { albumName } = useParams()
   const [formState, setFormState] = useState(initialState)
@@ -23,9 +23,11 @@ const CreateReview = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await Client.post('/reviews/create-review', formState)
+
+    await Client.post(`/reviews/create-review/${user.id}`, formState)
+
     setFormState(initialState)
-    navigate`/album/${albumName}`
+    navigate('/')
   }
   return (
     <form onSubmit={handleSubmit}>
