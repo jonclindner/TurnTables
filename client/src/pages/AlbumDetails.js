@@ -5,11 +5,11 @@ import {
   GetAlbumDetails,
   SearchAlbumsFromDb
 } from '../services/Album'
+import { GetReviewByAlbum } from '../services/Review'
 
 const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
-  console.log(album)
   let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
   const [albumId, setAlbumId] = useState()
@@ -31,16 +31,12 @@ const AlbumDetails = ({ user }) => {
           addSongArray.unshift(song.name)
         })
         setSongArray(addSongArray)
-
-        console.log(response)
       })
     }
     const checkAlbumExists = async (artistName, albumName) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
-      // console.log(result)
       if (result.data.length !== 0) {
         setAlbumId(result.data[0].id)
-        console.log('album exists')
         return
       } else {
         let res = await AddAlbumToDb({
@@ -51,6 +47,10 @@ const AlbumDetails = ({ user }) => {
         setAlbumId(res)
       }
     }
+    // const getReviews = async (id) => {
+    //   let result = await GetReviewByAlbum(id)
+    //   }
+
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
