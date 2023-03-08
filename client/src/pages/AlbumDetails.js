@@ -18,6 +18,7 @@ const AlbumDetails = ({ user }) => {
 
   const [songArray, setSongArray] = useState([])
   let addSongArray = []
+  const [reviewArray, setReviewArray] = useState()
 
   useEffect(() => {
     const GetAlbumInfo = async (artistName, albumName) => {
@@ -37,6 +38,7 @@ const AlbumDetails = ({ user }) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
       if (result.data.length !== 0) {
         setAlbumId(result.data[0].id)
+
         return
       } else {
         let res = await AddAlbumToDb({
@@ -47,13 +49,19 @@ const AlbumDetails = ({ user }) => {
         setAlbumId(res)
       }
     }
-    // const getReviews = async (id) => {
-    //   let result = await GetReviewByAlbum(id)
-    //   }
 
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
+
+  useEffect(() => {
+    const getReviews = async (id) => {
+      let result = await GetReviewByAlbum(id)
+      console.log(result)
+      setReviewArray(result)
+    }
+    getReviews(albumId)
+  }, [albumId])
 
   return (
     <div className="albumDetailsBody">
