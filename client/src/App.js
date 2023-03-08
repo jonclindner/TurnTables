@@ -45,8 +45,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/feed" element={<Feed user={user} />} />
           <Route path="/search/:search" element={<SearchResults />} />
-          <Route path="/album/:albumName" element={<AlbumDetails />} />
-          <Route path="/album/review/:albumName" element={<CreateReview />} />
+          <Route
+            path="/album/:albumName"
+            element={<AlbumDetails user={user} />}
+          />
+          <Route
+            path="/album/review/:albumName"
+            element={<CreateReview user={user} />}
+          />
           <Route path="/user-details" element={<UserDetails user={user} />} />
         </Routes>
       </main>
