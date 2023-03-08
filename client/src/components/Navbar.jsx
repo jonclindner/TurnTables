@@ -13,7 +13,7 @@ const Navbar = ({ user, handleLogOut }) => {
     <Link className='noDec'to='/feed'>Top Albums</Link>
     <Searchbar/>
     <Link to='/user-details' className='noDec'>
-        <p className='noDec'>User Details</p>
+        <p className='noDec'>{user.name}</p>
     </Link>
         <Link className='noDec'onClick={handleLogOut} to="/">
           Sign Out

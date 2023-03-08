@@ -40,6 +40,7 @@ const AlbumDetails = () => {
       // console.log(result)
       if (result.data.length !== 0) {
         albumId = result.data[0].id
+        console.log('album exists')
         return
       } else {
         let res = await AddAlbumToDb({
