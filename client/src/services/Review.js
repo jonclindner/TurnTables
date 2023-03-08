@@ -6,3 +6,9 @@ export const GetReviewByUser = async (id) => {
     return res
   } catch (error) {}
 }
+export const GetReviewByAlbum = async (id) => {
+  try {
+    const res = await Client.get(`/review/get-reviews-by-album-id/${id}`)
+    return res
+  } catch (error) {}
+}
