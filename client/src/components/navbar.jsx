@@ -12,7 +12,9 @@ const Navbar = ({ user, handleLogOut }) => {
       <Link to='/' className='siteLogo'><img className='homeLogo'src='https://cdn-icons-png.flaticon.com/512/181/181156.png'/><p>TurnTables</p></Link>
     <Link className='noDec'to='/feed'>Top Albums</Link>
     <Searchbar/>
-        <h3>Welcome {user.email}!</h3>
+    <Link to='/user-details' className='noDec'>
+        <p className='noDec'>User Details</p>
+    </Link>
         <Link className='noDec'onClick={handleLogOut} to="/">
           Sign Out
         </Link>

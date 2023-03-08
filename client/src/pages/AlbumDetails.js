@@ -44,8 +44,7 @@ const AlbumDetails = () => {
         let res = await AddAlbumToDb({
           name: albumName,
           artist: artistName,
-          image: album.large_image_url['#text'],
-          releaseDate: '1999'
+          image: album.large_image_url['#text']
         })
         albumId = res
       }

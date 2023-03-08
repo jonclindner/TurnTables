@@ -10,6 +10,7 @@ import CreateReview from './pages/CreateReview'
 import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import AlbumDetails from './pages/AlbumDetails'
+import UserDetails from './pages/UserDetails'
 // require('dotenv').config()
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/search/:search" element={<SearchResults />} />
           <Route path="/album/:albumName" element={<AlbumDetails />} />
           <Route path="/album/review/:albumName" element={<CreateReview />} />
+          <Route path="/user-details" element={<UserDetails user={user} />} />
         </Routes>
       </main>
     </div>
