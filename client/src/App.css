@@ -82,7 +82,7 @@ header{
   height: 175px;
 }
 .cardText:hover{
-  opacity: 1;
+  opacity: .80;
 }
 .albumDetailsBody{
   display: flex;
