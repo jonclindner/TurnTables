@@ -6,12 +6,25 @@ header{
   height: 50px;
   background-color: #9F7159;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
-link{
-  text-decoration: none;
+.optionsBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly
 }
+.navLink{
+  text-decoration: none;
+  margin-left: 50px;
+  margin-right: 50px ;
+}
+.noDec{
+  text-decoration: none;
+  color: black;
+}
+
 .homeLogo{
   max-width: 50px;
   object-fit: contain;
@@ -40,15 +53,44 @@ link{
 .feedBody{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+
 }
 .albumCard{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
+  text-decoration: none;
+  width: 300px;
+  padding: 10px;
 }
-.albumDetailsBody{
+.card{
+  padding: 0;
+  margin: 0;
+}
+.cardText{
+  margin-bottom: -175px;
+  z-index: 1;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  flex-wrap: wrap;
+  width: 175px;
+  height: 175px;
+}
+.cardText:hover{
+  opacity: 1;
+}
+.albumDetailsBody{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.column{
+  display: flex;
+  flex-direction: column
 }

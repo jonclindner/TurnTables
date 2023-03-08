@@ -58,31 +58,35 @@ const AlbumDetails = () => {
 
   return (
     <div className="albumDetailsBody">
-      <img src={`${album.large_image_url['#text']}`} />
-      <h1>{album.albumName}</h1>
-      <h2>{album.artist.name}</h2>
-      <h2>Tags:</h2>
 
-      {tagArray.length === 0 ? (
+      <div className="column">
+        <img src={`${album.large_image_url['#text']}`} />
+        <h1>{album.albumName}</h1>
+        <h2>{album.artist}</h2>
 
-        <div>No tags</div>
-      ) : (
-        tagArray.map((tag) => <h3>{tag}</h3>)
-      )}
-      <h2>Tracks:</h2>
-      {songArray.length === 0 ? (
-        <div>No tracks</div>
-      ) : (
-        songArray.map((track) => <h3>{track}</h3>)
-
-      )}
-
-      <div>
         <Link to={`/album/review/${album.albumName}`} key={album.albumName}>
           {/* <button>Leave a Review</button> */}
           <button>Review This Album</button>
         </Link>
       </div>
+      <div className="column">
+        <h2>Tags:</h2>
+        {tagArray.length === 0 ? (
+          <div>No tags</div>
+        ) : (
+          tagArray.map((tag) => <h3>{tag}</h3>)
+        )}
+      </div>
+      <div className="column tracks">
+        <h2>Tracks:</h2>
+        {songArray.length === 0 ? (
+          <div>No tracks</div>
+        ) : (
+          songArray.map((track) => <h3>{track}</h3>)
+        )}
+      </div>
+
+      <div></div>
     </div>
   )
 }
