@@ -62,7 +62,11 @@ const AlbumDetails = () => {
         <h1>{album.albumName}</h1>
         <h2>{album.artist}</h2>
 
-        <Link to={`/album/review/${album.albumName}`} key={album.albumName}>
+        <Link
+          to={`/album/review/${album.albumName}`}
+          state={{ albumId: albumId }}
+          key={album.albumName}
+        >
           {/* <button>Leave a Review</button> */}
           <button>Review This Album</button>
         </Link>
