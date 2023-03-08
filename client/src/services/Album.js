@@ -45,3 +45,9 @@ export const SearchAlbumsFromDb = async (artist, name) => {
     console.log('Error in Search Album')
   }
 }
+export const GetUserFavs = async (id) => {
+  try {
+    const response = await Client.get(`/get-fav-list/${id}`)
+    return response
+  } catch (error) {}
+}

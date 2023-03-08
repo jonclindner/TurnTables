@@ -19,7 +19,6 @@ const AlbumDetails = () => {
   const [songArray, setSongArray] = useState([])
   let addSongArray = []
 
-
   useEffect(() => {
     const GetAlbumInfo = async (artistName, albumName) => {
       await GetAlbumDetails(artistName, albumName).then((response) => {
@@ -41,6 +40,7 @@ const AlbumDetails = () => {
       // console.log(result)
       if (result.data.length !== 0) {
         albumId = result.data[0].id
+        console.log('album exists')
         return
       } else {
         let res = await AddAlbumToDb({
@@ -57,7 +57,6 @@ const AlbumDetails = () => {
 
   return (
     <div className="albumDetailsBody">
-
       <div className="column">
         <img src={`${album.large_image_url['#text']}`} />
         <h1>{album.albumName}</h1>
