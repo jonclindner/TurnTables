@@ -23,10 +23,10 @@ const CreateReview = ({ user }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-
     await Client.post(`/reviews/create-review/${user.id}`, formState)
 
     setFormState(initialState)
+
     navigate(-1)
   }
   return (
