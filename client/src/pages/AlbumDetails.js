@@ -6,13 +6,13 @@ import {
   SearchAlbumsFromDb
 } from '../services/Album'
 
-const AlbumDetails = () => {
+const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
   console.log(album)
   let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
-  let albumId
+  const [albumId, setAlbumId] = useState()
   const [tagArray, setTagArray] = useState([])
   let addTagArray = []
 
@@ -39,7 +39,7 @@ const AlbumDetails = () => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
       // console.log(result)
       if (result.data.length !== 0) {
-        albumId = result.data[0].id
+        setAlbumId(result.data[0].id)
         console.log('album exists')
         return
       } else {
@@ -48,7 +48,7 @@ const AlbumDetails = () => {
           artist: artistName,
           image: album.large_image_url['#text']
         })
-        albumId = res
+        setAlbumId(res)
       }
     }
     GetAlbumInfo(artistName, albumName)
@@ -62,14 +62,18 @@ const AlbumDetails = () => {
         <h1>{album.albumName}</h1>
         <h2>{album.artist}</h2>
 
-        <Link
-          to={`/album/review/${album.albumName}`}
-          state={{ albumId: albumId }}
-          key={album.albumName}
-        >
-          {/* <button>Leave a Review</button> */}
-          <button>Review This Album</button>
-        </Link>
+        {user ? (
+          <Link
+            to={`/album/review/${album.albumName}`}
+            state={{ albumId: albumId }}
+            key={album.albumName}
+          >
+            {/* <button>Leave a Review</button> */}
+            <button>Review This Album</button>
+          </Link>
+        ) : (
+          <h3>You must be logged in to review albums</h3>
+        )}
       </div>
       <div className="column">
         <h2>Tags:</h2>
