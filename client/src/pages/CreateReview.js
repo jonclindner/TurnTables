@@ -27,7 +27,7 @@ const CreateReview = ({ user }) => {
     await Client.post(`/reviews/create-review/${user.id}`, formState)
 
     setFormState(initialState)
-    navigate('/')
+    navigate(-1)
   }
   return (
     <form onSubmit={handleSubmit}>
