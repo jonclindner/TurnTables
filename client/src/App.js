@@ -1,13 +1,13 @@
 import './App.css'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
+import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Feed from './pages/Feed'
 import CreateReview from './pages/CreateReview'
-import { CheckSession } from './services/Auth'
 import SearchResults from './pages/SearchResults'
 import AlbumDetails from './pages/AlbumDetails'
 import UserDetails from './pages/UserDetails'
@@ -25,13 +25,13 @@ function App() {
     const user = await CheckSession()
     setUser(user)
   }
-  console.log(user)
 
   useEffect(() => {
     const token = localStorage.getItem('token')
 
     if (token) {
       checkToken()
+      console.log(token)
     }
   }, [])
 

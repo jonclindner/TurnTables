@@ -11,9 +11,8 @@ const CreateReview = ({ user }) => {
     userId: user.id,
     grading: '',
     comment: '',
-    albumId: '4'
+    albumId: albumId
   }
-  console.log(albumId)
   let { albumName } = useParams()
   const [formState, setFormState] = useState(initialState)
 
@@ -23,7 +22,7 @@ const CreateReview = ({ user }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await Client.post(`/review/create-review/${user.id}`, formState)
+    await Client.post(`/reviews/create-review/${user.id}`, formState)
     setFormState(initialState)
     navigate('/')
   }
