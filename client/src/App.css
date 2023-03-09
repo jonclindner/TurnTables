@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
+.profilePic:hover, .grow:hover, .pencil:hover{
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+.grow{
+  transition: all 0.3s;
+
+}
+
 body{
   /* background-color: #F7D3AA; */
   background-color: #293241;
@@ -9,6 +18,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+.flexAround{
+  display: flex;
+  justify-content: space-around;
+}
+
 
                                    /* NAVBAR */
 header{
@@ -36,6 +50,8 @@ header{
   font-weight: 900;
   text-shadow: 1px 1px 1px #293241;
   font-size: 20px;
+  transition: all 0.3s;
+
 
 
 
@@ -68,6 +84,7 @@ header{
   display: flex;
   align-items: center;
   
+  
 }
 .magnifyingGlass{
   max-width: 30px;
@@ -75,13 +92,17 @@ header{
 .searchInput{
   width: 400px;
   border-radius: 10px;
+  border: 2px solid #293241;
+}
+.searchInput:focus{
+  border: 2px solid #ee6c4d;
+
 }
 
 .feedBody{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
 }
 .albumCard{
   display: flex;
@@ -103,12 +124,10 @@ header{
   flex-direction: column;
   align-items: center;
   background-color: #98c1d9;
-
   width: 175px;
   height: 175px;
   max-width: 175;
   transition: all 0.3s;
-
 }
 .cardText:hover{
   opacity: .80;
@@ -154,7 +173,6 @@ header{
   display: flex;
   flex-direction: row-reverse;
   overflow-x: auto;
-  /* position: relative; */
 }
 h1,h2, h3{
   color: #e0fbfc;
@@ -168,25 +186,69 @@ h1,h2, h3{
 .reviewColumn{
   display: flex;
   flex-direction: column;
-  justify-items: flex-end;
-  /* justify-content: flex-start; */
-  /* justify-self: center; */
-  padding-left: 10px;
-  padding-right: 10px;
+  justify-items:start;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  max-width: 175px;
+  border: 2px solid #98c1d9;
+  border-radius: 10px;
+}
+.noMarg{
+margin: 0;
+}
+.iconBody{
+  display: flex;
+  flex-wrap: nowrap;
+  /* padding-bottom: 20px; */
+  justify-content: space-evenly;
+  
 }
                          /* HOME PAGE */
 .bar1{
   opacity: 0;
-  transition: all 2s;
+  transition: all 0.5s;
 }
 .bar2{
-  transition: all 2s;
+  transition: ease-in 0.5s;
+  transition-delay: 0s;
   opacity: 1;
 }
-.fade-in {
-  transition: opacity 1s ease;
+.bar3{
+  transition: ease-in 1s;
+  transition-delay: 1s;
+  opacity: 1;
 }
-.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease;
+.bar4{
+  transition: ease-in 1s;
+  transition-delay: 2s;
+  opacity: 1;
+}
+.bar5{
+  transition: ease-in 1s;
+  transition-delay: 3s;
+  opacity: 1;
+}
+.bar6{
+  transition: ease-in 1s;
+  transition-delay: 4s;
+  opacity: 1;
+}
+.bar7{
+  transition: ease-in 1s;
+  transition-delay: 5s;
+  opacity: 1;
+}
+.spotifyLink{
+  width: 250px;
+  height: 200px;
+  border: none;
+}
+.profilePic{
+  height: 150px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.socials{
+  display: flex;
 }
