@@ -12,13 +12,27 @@ const AlbumDetails = ({ user }) => {
   const { album } = location.state
   let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '-')
   let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
-  const [albumId, setAlbumId] = useState()
+  const [albumId, setAlbumId] = useState('')
   const [tagArray, setTagArray] = useState([])
+  const [initialRender, setInitialRender] = useState(true)
   let addTagArray = []
 
   const [songArray, setSongArray] = useState([])
   let addSongArray = []
   const [reviewArray, setReviewArray] = useState()
+
+  useEffect(() => {
+    if (initialRender) {
+      setInitialRender(false)
+    } else {
+      const getReviews = async (id) => {
+        let result = await GetReviewByAlbum(id)
+        console.log(result)
+        setReviewArray(result.data)
+      }
+      getReviews(albumId)
+    }
+  }, [albumId])
 
   useEffect(() => {
     const GetAlbumInfo = async (artistName, albumName) => {
@@ -37,6 +51,7 @@ const AlbumDetails = ({ user }) => {
     const checkAlbumExists = async (artistName, albumName) => {
       let result = await SearchAlbumsFromDb(artistName, albumName)
       if (result.data.length !== 0) {
+        console.log('hit')
         setAlbumId(result.data[0].id)
 
         return
@@ -53,15 +68,6 @@ const AlbumDetails = ({ user }) => {
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
-
-  useEffect(() => {
-    const getReviews = async (id) => {
-      let result = await GetReviewByAlbum(id)
-      console.log(result)
-      setReviewArray(result)
-    }
-    getReviews(albumId)
-  }, [albumId])
 
   return (
     <div className="albumDetailsBody">
