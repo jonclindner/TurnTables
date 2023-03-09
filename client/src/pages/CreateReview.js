@@ -7,6 +7,7 @@ const CreateReview = ({ user }) => {
   let navigate = useNavigate()
   const location = useLocation()
   const { albumId } = location.state
+  // const { user } = { user }
   const initialState = {
     userId: user.id,
     grading: '',
@@ -23,7 +24,9 @@ const CreateReview = ({ user }) => {
     event.preventDefault()
 
     await Client.post(`/reviews/create-review/${user.id}`, formState)
+
     setFormState(initialState)
+
     navigate(-1)
   }
   return (
