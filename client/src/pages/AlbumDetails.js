@@ -69,7 +69,6 @@ const AlbumDetails = ({ user }) => {
     checkAlbumExists(artistName, albumName)
   }, [])
 
-
   return (
     <div className="albumDetailsBody">
       <div className="column">
@@ -89,7 +88,7 @@ const AlbumDetails = ({ user }) => {
         ) : (
           <h3>You must be logged in to review albums</h3>
         )}
-        <div></div>
+        <div>{albumId ? reviewArray.map : null}</div>
       </div>
       <div className="column">
         <h2>Tags:</h2>
