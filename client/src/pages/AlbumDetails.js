@@ -61,7 +61,8 @@ const AlbumDetails = ({ user }) => {
           artist: artistName,
           image: album.large_image_url['#text']
         })
-        setAlbumId(res)
+        console.log(res)
+        setAlbumId(res.id)
       }
     }
 
