@@ -28,35 +28,45 @@ const Login = ({ setUser }) => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
-            <input
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="example@example.com"
-              value={formValues.email}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-          </div>
-          <button disabled={!formValues.email || !formValues.password}>
-            Sign In
-          </button>
-          <button onClick={guestLogin}>Guest Login</button>
-        </form>
+    <div className="flex">
+      <div className="reviewForm">
+        <div className="card-overlay centered">
+          <form className="" onSubmit={handleSubmit}>
+            <div className="flex">
+              <label className="noDec" htmlFor="email"></label>
+              <input
+                className="rounded-input"
+                onChange={handleChange}
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={formValues.email}
+                required
+              />
+            </div>
+            <div className="flex">
+              <label className="noDec" htmlFor="password"></label>
+              <input
+                className="rounded-input"
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formValues.password}
+                required
+              />
+            </div>
+            <button
+              className="signInButton"
+              disabled={!formValues.email || !formValues.password}
+            >
+              Sign In
+            </button>
+            <button className="signInButton" onClick={guestLogin}>
+              Guest Login
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )
