@@ -11,6 +11,7 @@ import CreateReview from './pages/CreateReview'
 import SearchResults from './pages/SearchResults'
 import AlbumDetails from './pages/AlbumDetails'
 import UserDetails from './pages/UserDetails'
+import UpdateReview from './pages/UpdateReview'
 // require('dotenv').config()
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             element={<CreateReview user={user} />}
           />
           <Route path="/user-details" element={<UserDetails user={user} />} />
+          <Route path="/update-review" element={<UpdateReview />} />
         </Routes>
       </main>
     </div>

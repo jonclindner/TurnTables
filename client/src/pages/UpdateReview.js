@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import Client from '../services/api'
 
 const UpdateReview = () => {
   let navigate = useNavigate()
+  const location = useLocation()
+  const { review } = location.state
   const initialState = {
-    // userId: '',
-    grading: '',
-    comment: ''
-    // albumId: ''
+    userId: review.userId,
+    grading: review.grading,
+    comment: review.comment,
+    albumId: review.albumId
   }
   let { albumId } = useParams()
-  console.log(albumId)
   const [formState, setFormState] = useState(initialState)
 
   const handleChange = (event) => {
@@ -20,7 +22,7 @@ const UpdateReview = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    await axios.post('http://localhost3001/review/updatereview', formState)
+    await Client.put(`reviews/update-review/${review.id}`, formState)
     setFormState(initialState)
     navigate('/')
   }
