@@ -75,9 +75,7 @@ const AlbumDetails = ({ user }) => {
     let result = await CreateFav(user.id, albumId)
     console.log(result)
   }
-  const removeReview = async (id) => {
-    let result = await DeleteReview(id)
-  }
+
   return (
     <div className="albumDetailsBody">
       <div className="columnBack">

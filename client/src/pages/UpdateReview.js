@@ -24,29 +24,35 @@ const UpdateReview = () => {
 
     await Client.put(`reviews/update-review/${review.id}`, formState)
     setFormState(initialState)
-    navigate('/')
+    navigate('-1')
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="grading">Rating</label>
-      <select id="grading" onChange={handleChange} value={formState.grading}>
-        <option value="0"> </option>
-        <option value="1">⭐️</option>
-        <option value="2">⭐️⭐️</option>
-        <option value="3">⭐️⭐️⭐️</option>
-        <option value="4">⭐️⭐️⭐️⭐️</option>
-        <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
-      </select>
-      <label htmlFor="comment">Comment</label>
-      <input
-        type="text"
-        id="comment"
-        onChange={handleChange}
-        value={formState.comment}
-      />
+    <div className="flex">
+      <form className="reviewForm" onSubmit={handleSubmit}>
+        <label className="noDec" htmlFor="grading">
+          Rating
+        </label>
+        <select id="grading" onChange={handleChange} value={formState.grading}>
+          <option value="0"> </option>
+          <option value="1">⭐️</option>
+          <option value="2">⭐️⭐️</option>
+          <option value="3">⭐️⭐️⭐️</option>
+          <option value="4">⭐️⭐️⭐️⭐️</option>
+          <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+        </select>
+        <label className="noDec" htmlFor="comment">
+          Comment
+        </label>
+        <input
+          type="text"
+          id="comment"
+          onChange={handleChange}
+          value={formState.comment}
+        />
 
-      <button type="submit">Submit Review</button>
-    </form>
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
   )
 }
 

@@ -190,3 +190,29 @@ h1,h2, h3{
   opacity: 0;
   transition: opacity 1s ease;
 }
+.reviewForm {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  padding:10px;
+  border-radius:10px;
+  background-color: #98c1d9;
+  margin-top: 50px;
+}
+
+button {
+
+
+  
+  padding:10px;
+  border:none;
+  background-color:#c15a2d;
+  color:#fff;
+  font-weight:600;
+  border-radius:5px;
+  width: 50%;
+  margin-top: 10px;
+
+}
