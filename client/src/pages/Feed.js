@@ -11,9 +11,7 @@ const Feed = () => {
       setResultArray(await GetTopAlbums(`${albumGenre}`))
     }
     fetchTop()
-    console.log('hit')
   }, [])
-  console.log(resultArray)
 
   return (
     <div>
