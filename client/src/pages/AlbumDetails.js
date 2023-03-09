@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import {
   AddAlbumToDb,
   GetAlbumDetails,
-  SearchAlbumsFromDb
+  SearchAlbumsFromDb,
+  CreateFav
 } from '../services/Album'
 import { GetReviewByAlbum } from '../services/Review'
 
@@ -61,13 +62,20 @@ const AlbumDetails = ({ user }) => {
           artist: artistName,
           image: album.large_image_url['#text']
         })
-        setAlbumId(res)
+        console.log(res)
+        setAlbumId(res.id)
       }
     }
 
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
+
+  const AddToFav = async () => {
+    let result = await CreateFav(user.id, albumId)
+    console.log(result)
+  }
+
 
   return (
     <div className="albumDetailsBody">
@@ -77,14 +85,18 @@ const AlbumDetails = ({ user }) => {
         <h2>{album.artist}</h2>
 
         {user ? (
-          <Link
-            to={`/album/review/${album.albumName}`}
-            state={{ albumId: albumId }}
-            key={album.albumName}
-          >
-            {/* <button>Leave a Review</button> */}
-            <button>Review This Album</button>
-          </Link>
+          <div>
+            <Link
+              to={`/album/review/${album.albumName}`}
+              state={{ albumId: albumId }}
+              key={album.albumName}
+            >
+              {/* <button>Leave a Review</button> */}
+              <button>Review This Album</button>
+            </Link>
+
+            <button onClick={AddToFav}>Add to favorites</button>
+          </div>
         ) : (
           <h3>You must be logged in to review albums</h3>
         )}

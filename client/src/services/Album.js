@@ -35,6 +35,14 @@ export const AddAlbumToDb = async (data) => {
     throw error
   }
 }
+export const getAlbumsFromDb = async () => {
+  try {
+    const response = await Client.get('/album/get-albums')
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
 export const SearchAlbumsFromDb = async (artist, name) => {
   try {
     const response = await Client.get(
@@ -47,7 +55,15 @@ export const SearchAlbumsFromDb = async (artist, name) => {
 }
 export const GetUserFavs = async (id) => {
   try {
-    const response = await Client.get(`/get-fav-list/${id}`)
-    return response
+    const response = await Client.get(`album/get-fav-list/${id}`)
+    return response.data
+  } catch (error) {}
+}
+export const CreateFav = async (user_id, album_id) => {
+  try {
+    const response = await Client.post(
+      `/album/create-favlist/${user_id}/${album_id}`
+    )
+    return response.data
   } catch (error) {}
 }

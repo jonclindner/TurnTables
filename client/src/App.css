@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 body{
   /* background-color: #F7D3AA; */
-  background-color: #DF9D6C;
+  background-color: #293241;
 }
 header{
   height: 50px;
-  background-color: #9F7159;
+  background-color: #98c1d9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,6 +31,7 @@ header{
 .homeLogo{
   max-width: 50px;
   object-fit: contain;
+  
 }
 .siteLogo{
   margin: 0;
@@ -36,6 +39,13 @@ header{
   text-decoration: none;
   color: black;
   font-size: xx-large;
+  
+}
+.orange{
+  color: #ee6c4d;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #293241;
+  font-family: 'Monoton';
   
 }
 .searchBar{
@@ -62,7 +72,7 @@ header{
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  width: 300px;
+  width: 175px;
   padding: 10px;
 }
 .card{
@@ -93,5 +103,32 @@ header{
 }
 .column{
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  background-color: #98c1d9;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+.albumImg{
+  width: 175px;
+  border-radius: 10px;
+}
+.userDetailsBody{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.userDesc{
+  width: 300px;
+  left: 0;
+  position: relative;
+  color: #e0fbfc;
+}
+.reviewDiv{
+  display: flex;
+  overflow-x: auto;
+  position: relative;
+}
+h1{
+  color: #e0fbfc;
+
 }

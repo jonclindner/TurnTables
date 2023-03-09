@@ -1,34 +1,81 @@
 import { useEffect, useState } from 'react'
-import { GetUserFavs } from '../services/Album'
+import { GetUserFavs, getAlbumsFromDb } from '../services/Album'
 import { GetReviewByUser } from '../services/Review'
 
 const UserDetails = ({ user }) => {
   const [userReviews, setUserReviews] = useState()
   const [userFavs, setUserFavs] = useState()
+  const [albums, setAlbums] = useState()
+  let num = 0
+  let counter = 0
 
   useEffect(() => {
     const getUserReviews = async (id) => {
-      let resonse = await GetReviewByUser(id)
-      setUserReviews(resonse)
+      let response = await GetReviewByUser(id)
+      setUserReviews(response.data)
     }
     const getUserFavs = async (id) => {
-      let resonse = await GetUserFavs(id)
-      setUserFavs(resonse)
+      let response = await GetUserFavs(id)
+      console.log(response[0].favoritelist)
+      setUserFavs(response[0].favoritelist)
     }
+    const getAlbums = async () => {
+      let response = await getAlbumsFromDb()
+      setAlbums(response)
+    }
+    getAlbums()
     getUserReviews(user.id)
     getUserFavs(user.id)
   }, [])
+
+  console.log(userReviews)
+  console.log(albums)
 
   return (
     <div>
       <h1>Welcome {user.name}</h1>
       {userReviews ? (
-        <h1>You have reviews</h1>
+        <div className="userDetailsBody">
+          <h1 className="userDesc">Your reviews:</h1>
+          <div className="reviewDiv">
+            {userReviews.map((review) => {
+              {
+                num = review.albumId - 1
+                counter += review.grading
+              }
+              return (
+                <div className="column">
+                  <img src={`${albums[num].image}`} className="albumImg"></img>
+                  <h3>On {albums[num].name.replaceAll('+', ' ')}</h3>
+                  <h3>By {albums[num].artist.replaceAll('+', ' ')}</h3>
+                  <h3>
+                    -"{review.comment}" {review.grading}/5
+                  </h3>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       ) : (
         <h1>you do not have reviews</h1>
       )}
       {userFavs ? (
-        <h1>You have favorite albums</h1>
+        <div className="userDetailsBody">
+          <h1 className="userDesc">Favlist({userFavs.length})</h1>
+          <div className="reviewDiv">
+            {userFavs.map((album) => {
+              return (
+                <div className="column">
+                  <img src={`${album.image}`} className="albumImg"></img>
+                  <h3>
+                    {album.name.replaceAll('+', ' ')}, &nbsp;
+                    {album.artist.replaceAll('+', ' ')}
+                  </h3>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       ) : (
         <h1>you do not have favorite albums</h1>
       )}
