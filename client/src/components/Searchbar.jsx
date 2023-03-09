@@ -9,7 +9,7 @@ const Searchbar = () => {
   }
   return (<div className='searchBar'>
     <Link to={`/search/${searchValue}`} state={{searchValue: `${searchValue}`}}>
-    <img className='magnifyingGlass' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png' />
+    <img className='magnifyingGlass grow' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/1200px-Magnifying_glass_icon.svg.png' />
     </Link>
     
   <input className='searchInput'placeholder='Search Albums' onChange={handleChange} />

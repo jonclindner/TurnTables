@@ -41,10 +41,9 @@ const UserDetails = ({ user }) => {
 
   return (
     <div>
-      <div className>
+      <div>
         <h1>Welcome,</h1>
-
-        <h1 className="siteTitle">{user.name}</h1>
+        {user ? <h1 className="siteTitle">{user.name}</h1> : <div></div>}
       </div>
 
       {userReviews ? (
@@ -58,13 +57,20 @@ const UserDetails = ({ user }) => {
               }
               return (
                 <div className="reviewColumn">
-                  <img src={`${albums[num].image}`} className="albumImg"></img>
-                  <h3>On {albums[num].name.replaceAll('+', ' ')}</h3>
-                  <h3>By {albums[num].artist.replaceAll('+', ' ')}</h3>
-                  <h3>
+                  <img
+                    src={`${albums[num].image}`}
+                    className="albumImg noMarg"
+                  ></img>
+                  <h3 className="noMarg">
+                    On {albums[num].name.replaceAll('+', ' ')}
+                  </h3>
+                  <h3 className="noMarg">
+                    By {albums[num].artist.replaceAll('+', ' ')}
+                  </h3>
+                  <h3 className="noMarg">
                     "{review.comment}" {review.grading}/5
                   </h3>
-                  <div className="feedBody">
+                  <div className="iconBody">
                     <Link to="/update-review" state={{ review: review }}>
                       <img
                         className="pencil"
@@ -93,7 +99,7 @@ const UserDetails = ({ user }) => {
           <div className="reviewDiv">
             {userFavs.map((album) => {
               return (
-                <div className="column">
+                <div className="reviewColumn">
                   <img src={`${album.image}`} className="albumImg"></img>
                   <h3>
                     {album.name.replaceAll('+', ' ')}, &nbsp;
