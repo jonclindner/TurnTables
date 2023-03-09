@@ -20,6 +20,12 @@ const Login = ({ setUser }) => {
     setUser(payload)
     navigate('/feed')
   }
+  const guestLogin = (e) => {
+    e.preventDefault()
+
+    setFormValues({ email: 'guest@guest', password: 'guest' })
+    handleSubmit(e)
+  }
 
   return (
     <div className="signin col">
@@ -49,6 +55,7 @@ const Login = ({ setUser }) => {
           <button disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
+          <button onClick={guestLogin}>Guest Login</button>
         </form>
       </div>
     </div>
