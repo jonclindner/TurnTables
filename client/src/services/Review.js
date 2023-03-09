@@ -12,3 +12,9 @@ export const GetReviewByAlbum = async (id) => {
     return res
   } catch (error) {}
 }
+export const DeleteReview = async (id) => {
+  try {
+    const res = await Client.delete(`/reviews/delete/${id}`)
+    return res
+  } catch (error) {}
+}

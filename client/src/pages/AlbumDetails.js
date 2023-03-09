@@ -6,13 +6,13 @@ import {
   SearchAlbumsFromDb,
   CreateFav
 } from '../services/Album'
-import { GetReviewByAlbum } from '../services/Review'
+import { GetReviewByAlbum, DeleteReview } from '../services/Review'
 
 const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
-  let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '-')
-  let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '-')
+  let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '%2F')
+  let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '%2F')
   const [albumId, setAlbumId] = useState('')
   const [tagArray, setTagArray] = useState([])
   const [initialRender, setInitialRender] = useState(true)
@@ -75,8 +75,9 @@ const AlbumDetails = ({ user }) => {
     let result = await CreateFav(user.id, albumId)
     console.log(result)
   }
-
-
+  const removeReview = async (id) => {
+    let result = await DeleteReview(id)
+  }
   return (
     <div className="albumDetailsBody">
       <div className="column">
@@ -100,7 +101,17 @@ const AlbumDetails = ({ user }) => {
         ) : (
           <h3>You must be logged in to review albums</h3>
         )}
-        <div>{albumId ? reviewArray.map : null}</div>
+        <div>
+          {reviewArray
+            ? reviewArray.map((review) => (
+                <div>
+                  <h3>
+                    -"{review.comment}" {review.grading}/5
+                  </h3>
+                </div>
+              ))
+            : null}
+        </div>
       </div>
       <div className="column">
         <h2>Tags:</h2>

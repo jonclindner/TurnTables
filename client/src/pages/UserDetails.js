@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { GetUserFavs, getAlbumsFromDb } from '../services/Album'
-import { GetReviewByUser } from '../services/Review'
+import { GetReviewByUser, DeleteReview } from '../services/Review'
+import { Link } from 'react-router-dom'
 
 const UserDetails = ({ user }) => {
   const [userReviews, setUserReviews] = useState()
   const [userFavs, setUserFavs] = useState()
   const [albums, setAlbums] = useState()
+  const [deleteResult, setDeleteResult] = useState()
   let num = 0
   let counter = 0
 
@@ -26,10 +28,16 @@ const UserDetails = ({ user }) => {
     getAlbums()
     getUserReviews(user.id)
     getUserFavs(user.id)
-  }, [])
+  }, [deleteResult])
 
   console.log(userReviews)
   console.log(albums)
+  const removeReview = async (id) => {
+    console.log('hit')
+    let result = await DeleteReview(id)
+    setDeleteResult(result)
+  }
+  console.log(deleteResult)
 
   return (
     <div>
@@ -51,6 +59,16 @@ const UserDetails = ({ user }) => {
                   <h3>
                     -"{review.comment}" {review.grading}/5
                   </h3>
+                  <Link to="/update-review" state={{ review: review }}>
+                    <button>Update Review</button>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      removeReview(review.id)
+                    }}
+                  >
+                    Delete Review
+                  </button>
                 </div>
               )
             })}
