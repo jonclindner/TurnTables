@@ -13,7 +13,6 @@ const Home = () => {
     <div className="flex">
       <h1 className={fade.fade}>Welcome to </h1>
       <h1 className={`${fade.fade}  siteTitle`}> TurnTables </h1>
-      <h1> </h1>
       <h1 className={fade.fade}>Cool Cats</h1>
     </div>
   )
