@@ -4,6 +4,13 @@ body{
   /* background-color: #F7D3AA; */
   background-color: #293241;
 }
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+                                   /* NAVBAR */
 header{
   height: 50px;
   background-color: #98c1d9;
@@ -25,9 +32,16 @@ header{
 }
 .noDec{
   text-decoration: none;
-  color: black;
-}
+  color: #e0fbfc;
+  font-weight: 900;
+  text-shadow: 1px 1px 1px #293241;
+  font-size: 20px;
 
+
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  
+}
 .homeLogo{
   max-width: 50px;
   object-fit: contain;
@@ -43,10 +57,12 @@ header{
 }
 .orange{
   color: #ee6c4d;
+}
+.siteTitle{
+  color: #ee6c4d;
   font-weight: 900;
   text-shadow: 1px 1px 1px #293241;
   font-family: 'Monoton';
-  
 }
 .searchBar{
   display: flex;
@@ -86,13 +102,18 @@ header{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  flex-wrap: wrap;
+  background-color: #98c1d9;
+
   width: 175px;
   height: 175px;
+  max-width: 175;
+  transition: all 0.3s;
+
 }
 .cardText:hover{
   opacity: .80;
+  transition: all 0.3s;
+  transform: scale(1.1);
 }
 .albumDetailsBody{
   display: flex;
@@ -102,6 +123,13 @@ header{
   flex-wrap: wrap;
 }
 .column{
+  display: flex;
+  flex-direction: column;
+  /* background-color: #98c1d9; */
+  border-radius: 10px;
+  margin: 0 10px;
+}
+.columnBack{
   display: flex;
   flex-direction: column;
   background-color: #98c1d9;
@@ -114,8 +142,7 @@ header{
 }
 .userDetailsBody{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .userDesc{
   width: 300px;
@@ -125,10 +152,41 @@ header{
 }
 .reviewDiv{
   display: flex;
+  flex-direction: row-reverse;
   overflow-x: auto;
-  position: relative;
+  /* position: relative; */
 }
-h1{
+h1,h2, h3{
   color: #e0fbfc;
+}
 
+
+/* USER DETAILS PAGE  */
+.pencil{
+  max-width: 25px;
+}
+.reviewColumn{
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  /* justify-content: flex-start; */
+  /* justify-self: center; */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+                         /* HOME PAGE */
+.bar1{
+  opacity: 0;
+  transition: all 2s;
+}
+.bar2{
+  transition: all 2s;
+  opacity: 1;
+}
+.fade-in {
+  transition: opacity 1s ease;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
 }
