@@ -56,7 +56,7 @@ const AlbumDetails = ({ user }) => {
 
   useEffect(() => {
     const getReviews = async (id) => {
-      let result = await GetReviewByAlbum(id)
+      let result = await GetReviewByAlbum(2)
       console.log(result)
       setReviewArray(result)
     }
@@ -82,6 +82,7 @@ const AlbumDetails = ({ user }) => {
         ) : (
           <h3>You must be logged in to review albums</h3>
         )}
+        <div></div>
       </div>
       <div className="column">
         <h2>Tags:</h2>
