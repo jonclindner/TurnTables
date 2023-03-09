@@ -1,6 +1,6 @@
-# TurnTables
+# [TurnTables](https://turn-tables.surge.sh/feed)
 
-## **3/02/2023**
+## **3/10/2023**
 
 #### [Jon Lindner ](https://www.linkedin.com/in/jon-lindner-807847183/) | [Noah Vaughn](https://www.linkedin.com/in/noahvaughn/) | [Sarah Maher](https://www.linkedin.com/in/sarah-maher-8a6865255/?original_referer=https%3A%2F%2Fgithub.com%2Fmartinsliz%2FTheme-Park-Haters%2Fedit%2Fmain%2FREADME.md)
 
@@ -58,3 +58,5 @@
 ---
 
 ## **Credits**
+
+#### [Album Information and Images](https://www.last.fm/)
