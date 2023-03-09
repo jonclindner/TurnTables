@@ -41,7 +41,12 @@ const UserDetails = ({ user }) => {
 
   return (
     <div>
-      <h1>Welcome {user.name}</h1>
+      <div className>
+        <h1>Welcome,</h1>
+
+        <h1 className="siteTitle">{user.name}</h1>
+      </div>
+
       {userReviews ? (
         <div className="userDetailsBody">
           <h1 className="userDesc">Your reviews:</h1>
@@ -52,23 +57,28 @@ const UserDetails = ({ user }) => {
                 counter += review.grading
               }
               return (
-                <div className="column">
+                <div className="reviewColumn">
                   <img src={`${albums[num].image}`} className="albumImg"></img>
                   <h3>On {albums[num].name.replaceAll('+', ' ')}</h3>
                   <h3>By {albums[num].artist.replaceAll('+', ' ')}</h3>
                   <h3>
-                    -"{review.comment}" {review.grading}/5
+                    "{review.comment}" {review.grading}/5
                   </h3>
-                  <Link to="/update-review" state={{ review: review }}>
-                    <button>Update Review</button>
-                  </Link>
-                  <button
-                    onClick={() => {
-                      removeReview(review.id)
-                    }}
-                  >
-                    Delete Review
-                  </button>
+                  <div className="feedBody">
+                    <Link to="/update-review" state={{ review: review }}>
+                      <img
+                        className="pencil"
+                        src="https://www.seekpng.com/png/full/6-61975_pencil-transparent-png-pictures-proofread-and-edit.png"
+                      />
+                    </Link>
+                    <img
+                      src="https://freepngimg.com/save/164915-trash-free-png-hq/512x512"
+                      className="pencil"
+                      onClick={() => {
+                        removeReview(review.id)
+                      }}
+                    />
+                  </div>
                 </div>
               )
             })}

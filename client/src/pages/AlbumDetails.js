@@ -12,7 +12,7 @@ const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
   let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '%2F')
-  let albumName = album.albumName.replace(/\s+/g, '+').replace(/\//g, '%2F')
+  let albumName = album.albumName.replace(/\+s/g, '+').replace(/\//g, '%2F')
   const [albumId, setAlbumId] = useState('')
   const [tagArray, setTagArray] = useState([])
   const [initialRender, setInitialRender] = useState(true)
@@ -80,9 +80,9 @@ const AlbumDetails = ({ user }) => {
   }
   return (
     <div className="albumDetailsBody">
-      <div className="column">
+      <div className="columnBack">
         <img src={`${album.large_image_url['#text']}`} />
-        <h1>{album.albumName}</h1>
+        <h1 className="siteTitle">{album.albumName}</h1>
         <h2>{album.artist}</h2>
 
         {user ? (
@@ -92,11 +92,14 @@ const AlbumDetails = ({ user }) => {
               state={{ albumId: albumId }}
               key={album.albumName}
             >
-              {/* <button>Leave a Review</button> */}
               <button>Review This Album</button>
             </Link>
 
-            <button onClick={AddToFav}>Add to favorites</button>
+            <img
+              onClick={AddToFav}
+              src="http://cdn.onlinewebfonts.com/svg/img_330749.png"
+              className="pencil"
+            ></img>
           </div>
         ) : (
           <h3>You must be logged in to review albums</h3>
@@ -106,7 +109,7 @@ const AlbumDetails = ({ user }) => {
             ? reviewArray.map((review) => (
                 <div>
                   <h3>
-                    -"{review.comment}" {review.grading}/5
+                    {review.grading}/5 "{review.comment}" - User {review.userId}
                   </h3>
                 </div>
               ))
