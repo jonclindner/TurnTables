@@ -35,7 +35,12 @@ const CreateReview = ({ user }) => {
         <label className="noDec" htmlFor="grading">
           Rating
         </label>
-        <select id="grading" onChange={handleChange} value={formState.grading}>
+        <select
+          className="rounded-input"
+          id="grading"
+          onChange={handleChange}
+          value={formState.grading}
+        >
           <option value="0"> </option>
           <option value="1">⭐️</option>
           <option value="2">⭐️⭐️</option>
@@ -47,6 +52,7 @@ const CreateReview = ({ user }) => {
           Comment
         </label>
         <input
+          className="rounded-input"
           type="text"
           id="comment"
           onChange={handleChange}
