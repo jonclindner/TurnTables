@@ -70,10 +70,12 @@ const AlbumDetails = ({ user }) => {
     GetAlbumInfo(artistName, albumName)
     checkAlbumExists(artistName, albumName)
   }, [])
+
   const AddToFav = async () => {
     let result = await CreateFav(user.id, albumId)
     console.log(result)
   }
+
 
   return (
     <div className="albumDetailsBody">
@@ -98,7 +100,7 @@ const AlbumDetails = ({ user }) => {
         ) : (
           <h3>You must be logged in to review albums</h3>
         )}
-        <div></div>
+        <div>{albumId ? reviewArray.map : null}</div>
       </div>
       <div className="column">
         <h2>Tags:</h2>
