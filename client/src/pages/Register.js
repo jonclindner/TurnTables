@@ -28,35 +28,36 @@ const Register = () => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="name">Name</label>
+    <div className="flex">
+      <div className="reviewForm">
+        <form onSubmit={handleSubmit}>
+          <div>
             <input
+              className="rounded-input"
               onChange={handleChange}
               name="name"
               type="text"
-              placeholder="John Smith"
+              placeholder="Username"
               value={formValues.name}
               required
             />
           </div>
-          <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+          <div>
             <input
+              className="rounded-input"
               onChange={handleChange}
               name="email"
               type="email"
-              placeholder="example@example.com"
+              placeholder="Email"
               value={formValues.email}
               required
             />
           </div>
 
-          <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+          <div>
             <input
+              placeholder="Password"
+              className="rounded-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -65,8 +66,9 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
+              placeholder="Confirm Password"
+              className="rounded-input"
               onChange={handleChange}
               type="password"
               name="confirmPassword"
@@ -75,13 +77,14 @@ const Register = () => {
             />
           </div>
           <button
+            className="registerButton"
             disabled={
               !formValues.email ||
               (!formValues.password &&
                 formValues.confirmPassword === formValues.password)
             }
           >
-            Sign In
+            Register User
           </button>
         </form>
       </div>
