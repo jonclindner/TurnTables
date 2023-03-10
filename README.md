@@ -37,10 +37,10 @@
 
 ![screen gif](images/TurnTables_Screen_recording_AdobeExpress.gif)
 
----
+#### User Details Page
 
----
+## ![screen gif](images/SarahProfileScreenshot.jpg)
 
 ## **Credits**
 
-#### [Album Information and Images](https://www.last.fm/)
+#### Album Information and Images: [Last.fm](https://www.last.fm/)
