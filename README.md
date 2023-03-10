@@ -31,7 +31,7 @@
 
 #### Component Heirerachy Diagram:
 
-#### ![ERD](images/CHD.png)
+#### ![ERD](images/TurnTables_Screen_recording_AdobeExpress.gif)
 
 #### Entity Relationship Diagram:
 
