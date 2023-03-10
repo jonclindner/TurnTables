@@ -18,7 +18,7 @@ const Login = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
-    navigate('/feed')
+    navigate('/')
   }
   const guestLogin = (e) => {
     e.preventDefault()

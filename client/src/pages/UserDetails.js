@@ -8,6 +8,7 @@ const UserDetails = ({ user }) => {
   const [userFavs, setUserFavs] = useState()
   const [albums, setAlbums] = useState()
   const [deleteResult, setDeleteResult] = useState()
+  const [User, setUser] = useState()
   let num = 0
   let counter = 0
 
@@ -18,37 +19,42 @@ const UserDetails = ({ user }) => {
     }
     const getUserFavs = async (id) => {
       let response = await GetUserFavs(id)
-      console.log(response[0].favoritelist)
       setUserFavs(response[0].favoritelist)
     }
     const getAlbums = async () => {
       let response = await getAlbumsFromDb()
       setAlbums(response)
     }
+    if (user) {
+      getUserReviews(user.id)
+      getUserFavs(user.id)
+    } else {
+      setUser(user)
+      console.log(user)
+      console.log(User)
+    }
     getAlbums()
-    getUserReviews(user.id)
-    getUserFavs(user.id)
-  }, [deleteResult])
+  }, [deleteResult, user, User])
 
-  console.log(userReviews)
-  console.log(albums)
   const removeReview = async (id) => {
-    console.log('hit')
     let result = await DeleteReview(id)
     setDeleteResult(result)
   }
-  console.log(deleteResult)
 
   return (
     <div>
-      <div>
-        <h1>Welcome,</h1>
-        {user ? <h1 className="siteTitle">{user.name}</h1> : <div></div>}
+      <div style={{ display: 'flex' }}>
+        <h1 className="padLeft">Welcome,</h1>
+        {user ? (
+          <h1 className="siteTitle padLeft">{user.name}</h1>
+        ) : (
+          <div></div>
+        )}
       </div>
 
-      {userReviews ? (
+      {userReviews && albums ? (
         <div className="userDetailsBody">
-          <h1 className="userDesc">Your reviews:</h1>
+          <h1 className="userDesc padLeft">Your reviews:</h1>
           <div className="reviewDiv">
             {userReviews.map((review) => {
               {
@@ -95,7 +101,7 @@ const UserDetails = ({ user }) => {
       )}
       {userFavs ? (
         <div className="userDetailsBody">
-          <h1 className="userDesc">Favlist({userFavs.length})</h1>
+          <h1 className="userDesc padLeft">Favlist({userFavs.length})</h1>
           <div className="reviewDiv">
             {userFavs.map((album) => {
               return (

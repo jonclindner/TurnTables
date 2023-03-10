@@ -24,7 +24,7 @@ const UpdateReview = () => {
 
     await Client.put(`reviews/update-review/${review.id}`, formState)
     setFormState(initialState)
-    navigate('-1')
+    navigate(-1)
   }
   return (
     <div className="flex">

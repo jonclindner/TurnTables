@@ -10,12 +10,23 @@ const Navbar = ({ user, handleLogOut }) => {
     userOptions = (<header>
 
       <Link to='/' className='siteLogo'><img className='homeLogo'src='https://cdn-icons-png.flaticon.com/512/181/181156.png'/><p className='siteTitle'>TurnTables</p></Link>
-    <Link className='noDec grow'to='/feed'>Top Albums</Link>
+    {/* <Link className='noDec grow'to='/feed'>Top Albums</Link> */}
+    <div className='dd'>
+      <p className='noDec ddbtn'>Top Albums</p>
+      <div className='ddContent'>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'pop'}}>Pop</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'hip-hop'}}>Hip-Hop</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'nu metal'}}>Nu Metal</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'rock'}}>Rock</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'country'}}>Country</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'polka'}}>Traditional Polka</Link>
+      </div>
+    </div>
     <Searchbar/>
-    <Link to='/user-details' className='noDec grow'>
-        <p className='noDec'>{user.name}</p>
+    <Link to='/user-details' className='noDec '>
+        <p className='noDec lines'>{user.name}</p>
     </Link>
-        <Link className='noDec grow'onClick={handleLogOut} to="/">
+        <Link className='noDec lines'onClick={handleLogOut} to="/">
           Sign Out
         </Link>
     </header>
@@ -24,10 +35,20 @@ const Navbar = ({ user, handleLogOut }) => {
   const publicOptions = (<header>
 
     <Link to='/' className='siteLogo orange'><img className='homeLogo'src='https://cdn-icons-png.flaticon.com/512/181/181156.png'/><p className='siteTitle'>TurnTables</p></Link>
-    <Link to='/feed' className='noDec grow'>Top Albums</Link>
+    <div className='dd'>
+      <p className='noDec ddbtn'>Top Albums</p>
+      <div className='ddContent'>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'pop'}}>Pop</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'hip-hop'}}>Hip-Hop</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'nu metal'}}>Nu Metal</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'rock'}}>Rock</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'country'}}>Country</Link>
+      <Link to='/feed'className='noDec genreLink underline' state={{genre: 'polka'}}>Traditional Polka</Link>
+      </div>
+    </div>
     <Searchbar/>
-    <Link className='navLink noDec grow' to='/login'>Login</Link>
-    <Link className='navLink noDec grow' to='/register'>Register</Link>
+    <Link className='navLink noDec lines' to='/login'>Login</Link>
+    <Link className='navLink noDec lines' to='/register'>Register</Link>
   </header>
   )
 

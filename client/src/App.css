@@ -25,6 +25,55 @@ body{
 
 
                                    /* NAVBAR */
+.dd{
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+
+}
+.ddContent{
+  display: none;
+  text-decoration: none;
+  /* display: flex; */
+  flex-direction: column;
+  /* background-color: #98c1d9; */
+  z-index: 1;
+
+
+}
+.dd:hover .ddContent{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #98c1d9;
+  margin-top: -10px;
+  z-index: 1;
+}
+.genreLink{
+  width: 150px;
+  padding-bottom: 20px;
+  z-index: 1;
+}
+.underline{
+  transition: all 5s;
+  border: 3px solid #98c1d9;
+}
+.underline:hover{
+  border: 3px solid #e0fbfc ;
+  /* transition: all 0.3s; */
+}
+.lines{
+  border-left: 4px solid #98c1d9;
+  border-right: 4px solid #98c1d9;
+  transition: ease-in-out 0.3s;
+}
+.lines:hover{
+  border-left: 4px solid #e0fbfc;
+  border-right: 4px solid #e0fbfc;
+  transition: all 0.3s;
+
+}
 header{
   height: 50px;
   background-color: #98c1d9;
@@ -51,17 +100,11 @@ header{
   text-shadow: 1px 1px 1px #293241;
   font-size: 20px;
   transition: all 0.3s;
-
-
-
-
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  
 }
 .homeLogo{
   max-width: 50px;
   object-fit: contain;
-  
 }
 .siteLogo{
   margin: 0;
@@ -69,10 +112,6 @@ header{
   text-decoration: none;
   color: black;
   font-size: xx-large;
-  
-}
-.orange{
-  color: #ee6c4d;
 }
 .siteTitle{
   color: #ee6c4d;
@@ -83,7 +122,8 @@ header{
 .searchBar{
   display: flex;
   align-items: center;
-  
+  /* position: static; */
+
   
 }
 .magnifyingGlass{
@@ -93,9 +133,11 @@ header{
   width: 400px;
   border-radius: 10px;
   border: 2px solid #293241;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .searchInput:focus{
-  border: 2px solid #ee6c4d;
+  outline: 3px solid#ee6c4d;
+  box-shadow: 0px 0px 2px;
 
 }
 
@@ -111,6 +153,7 @@ header{
   text-decoration: none;
   width: 175px;
   padding: 10px;
+  z-index: 0;
 }
 .card{
   padding: 0;
@@ -133,6 +176,27 @@ header{
   opacity: .80;
   transition: all 0.3s;
   transform: scale(1.1);
+  border-radius: 10px;
+}
+
+          /* ALBUM DETAILS */
+.albumLinks{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  
+}
+.reviewButton{
+  width: 200px;
+}
+.star{
+  max-width: 50px;
+  transition: all 1s;
+
+}
+.star:hover{
+  transform: rotate(360deg);
+  transition: all 1s;
 }
 .albumDetailsBody{
   display: flex;
@@ -151,9 +215,14 @@ header{
 .columnBack{
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   background-color: #98c1d9;
   border-radius: 10px;
   margin: 0 10px;
+  width: 400px;
+}
+.padLeft{
+  padding-left: 15px;
 }
 .albumImg{
   width: 175px;
@@ -200,7 +269,6 @@ margin: 0;
 .iconBody{
   display: flex;
   flex-wrap: nowrap;
-  /* padding-bottom: 20px; */
   justify-content: space-evenly;
   
 }

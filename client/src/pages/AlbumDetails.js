@@ -11,11 +11,18 @@ import { GetReviewByAlbum, DeleteReview } from '../services/Review'
 const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
-  let artistName = album.artist.replace(/\s+/g, '+').replace(/\//g, '%2F')
-  let albumName = album.albumName.replace(/\+s/g, '+').replace(/\//g, '%2F')
+  let artistName = album.artist
+    .replace(/\s+/g, '+')
+    .replace(/\//g, '%2F')
+    .replaceAll('?', '%3F')
+  let albumName = album.albumName
+    .replace(/\+s/g, '+')
+    .replace(/\//g, '%2F')
+    .replaceAll('?', '%3F')
   const [albumId, setAlbumId] = useState('')
   const [tagArray, setTagArray] = useState([])
   const [initialRender, setInitialRender] = useState(true)
+  const [clicked, SetClicked] = useState(false)
   let addTagArray = []
 
   const [songArray, setSongArray] = useState([])
@@ -73,30 +80,38 @@ const AlbumDetails = ({ user }) => {
 
   const AddToFav = async () => {
     let result = await CreateFav(user.id, albumId)
-    console.log(result)
+    makeClicked()
+  }
+  const makeClicked = () => {
+    SetClicked(true)
   }
 
   return (
     <div className="albumDetailsBody">
       <div className="columnBack">
         <img src={`${album.large_image_url['#text']}`} />
-        <h1 className="siteTitle">{album.albumName}</h1>
-        <h2>{album.artist}</h2>
+        <h1 className="siteTitle padLeft">{album.albumName}</h1>
+        <h2 className="padLeft">{album.artist}</h2>
 
         {user ? (
-          <div>
+          <div className="albumLinks">
             <Link
               to={`/album/review/${album.albumName}`}
               state={{ albumId: albumId }}
               key={album.albumName}
+              className="reviewButton"
             >
-              <button>Review This Album</button>
+              <button className="grow reviewButton">Review This Album</button>
             </Link>
 
             <img
               onClick={AddToFav}
-              src="http://cdn.onlinewebfonts.com/svg/img_330749.png"
-              className="pencil"
+              src={
+                clicked
+                  ? 'https://img.icons8.com/color/512/star--v1.png'
+                  : 'http://cdn.onlinewebfonts.com/svg/img_330749.png'
+              }
+              className="star"
             ></img>
           </div>
         ) : (
