@@ -30,8 +30,6 @@ const UserDetails = ({ user }) => {
       getUserFavs(user.id)
     } else {
       setUser(user)
-      console.log(user)
-      console.log(User)
     }
     getAlbums()
   }, [deleteResult, user, User])
@@ -68,10 +66,10 @@ const UserDetails = ({ user }) => {
                     className="albumImg noMarg"
                   ></img>
                   <h3 className="noMarg">
-                    On {albums[num].name.replaceAll('+', ' ')}
+                    On {decodeURIComponent(albums[num].name)}
                   </h3>
                   <h3 className="noMarg">
-                    By {albums[num].artist.replaceAll('+', ' ')}
+                    By {decodeURIComponent(albums[num].artist)}
                   </h3>
                   <h3 className="noMarg">
                     "{review.comment}" {review.grading}/5
@@ -108,8 +106,9 @@ const UserDetails = ({ user }) => {
                 <div className="reviewColumn">
                   <img src={`${album.image}`} className="albumImg"></img>
                   <h3>
-                    {album.name.replaceAll('+', ' ')}, &nbsp;
-                    {album.artist.replaceAll('+', ' ')}
+                    {decodeURIComponent(album.name).replaceAll('+', ' ')},
+                    &nbsp;
+                    {decodeURIComponent(album.artist).replaceAll('+', ' ')}
                   </h3>
                 </div>
               )

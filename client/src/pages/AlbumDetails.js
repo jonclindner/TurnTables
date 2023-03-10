@@ -11,14 +11,10 @@ import { GetReviewByAlbum, DeleteReview } from '../services/Review'
 const AlbumDetails = ({ user }) => {
   const location = useLocation()
   const { album } = location.state
-  let artistName = album.artist
-    .replace(/\s+/g, '+')
-    .replace(/\//g, '%2F')
-    .replaceAll('?', '%3F')
-  let albumName = album.albumName
-    .replace(/\+s/g, '+')
-    .replace(/\//g, '%2F')
-    .replaceAll('?', '%3F')
+
+  let artistName = encodeURIComponent(album.artist)
+  let albumName = encodeURIComponent(album.albumName)
+
   const [albumId, setAlbumId] = useState('')
   const [tagArray, setTagArray] = useState([])
   const [initialRender, setInitialRender] = useState(true)
@@ -35,7 +31,6 @@ const AlbumDetails = ({ user }) => {
     } else {
       const getReviews = async (id) => {
         let result = await GetReviewByAlbum(id)
-        console.log(result)
         setReviewArray(result.data)
       }
       getReviews(albumId)
