@@ -24,6 +24,7 @@ const AlbumDetails = ({ user }) => {
   const [songArray, setSongArray] = useState([])
   let addSongArray = []
   const [reviewArray, setReviewArray] = useState()
+  console.log(albumId)
 
   useEffect(() => {
     if (initialRender) {
@@ -80,6 +81,7 @@ const AlbumDetails = ({ user }) => {
   const makeClicked = () => {
     SetClicked(true)
   }
+  console.log(reviewArray)
 
   return (
     <div className="albumDetailsBody">
